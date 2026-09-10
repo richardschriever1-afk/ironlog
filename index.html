@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#111111">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="IronLog">
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="icon-192.png">
+<link rel="stylesheet" href="styles.css">
+<title>IronLog</title>
+</head>
+<body>
+<header><div><h1>IRON LOG</h1><p>Lift. Log. Progress.</p></div></header>
+<main>
+<section id="home" class="view active">
+<div class="hero"><h2>Start Workout</h2><p>Choose a training day.</p></div>
+<div id="types" class="grid"></div>
+<h3>Templates</h3><div id="templates" class="stack"></div>
+</section>
+
+<section id="workout" class="view">
+<div class="topline"><button id="backBtn" class="secondary">← Back</button><h2 id="workoutTitle">Workout</h2><span id="elapsed">0m</span></div>
+<div class="stats"><div><b id="setsStat">0</b><span>Sets</span></div><div><b id="repsStat">0</b><span>Reps</span></div><div><b id="volStat">0</b><span>Volume</span></div></div>
+<div id="restBar" class="rest hidden"><span>Rest</span><b id="restText">2:00</b><button id="stopRest" class="secondary">Stop</button></div>
+<div id="exerciseCards" class="stack"></div>
+<div class="actions"><button id="addExercise">+ Exercise</button><button id="restBtn" class="secondary">Rest Timer</button><button id="plateBtn" class="secondary">Plate Calc</button></div>
+<div class="card"><h3>Workout Details</h3><div class="two"><label>Body Weight<input id="bodyWeight" type="number" inputmode="decimal" placeholder="lb"></label><label>Calories<input id="calories" type="number" inputmode="numeric" placeholder="optional"></label></div><label>Notes<textarea id="notes" rows="3"></textarea></label></div>
+<button id="finishBtn" class="full">Finish & Save Workout</button>
+</section>
+
+<section id="history" class="view"><h2>History</h2><div id="historyList" class="stack"></div></section>
+
+<section id="progress" class="view">
+<h2>Progress</h2>
+<div class="card"><label>Exercise<select id="progressExercise"></select></label><div class="stats"><div><b id="prWeight">0</b><span>PR Weight</span></div><div><b id="pr1rm">0</b><span>Best e1RM</span></div><div><b id="sessionsCount">0</b><span>Sessions</span></div></div></div>
+<div class="card"><h3>Strength Trend</h3><canvas id="chart" width="800" height="360"></canvas></div>
+</section>
+
+<section id="tools" class="view">
+<h2>Tools</h2>
+<div class="card"><h3>Plate Calculator</h3><div class="two"><label>Target<input id="plateTarget" type="number" value="135"></label><label>Bar<input id="barWeight" type="number" value="45"></label></div><div id="plateResult"></div></div>
+<div class="card"><h3>1RM Calculator</h3><div class="two"><label>Weight<input id="rmWeight" type="number" value="225"></label><label>Reps<input id="rmReps" type="number" value="5"></label></div><p class="big"><span id="rmResult">263</span> lb</p></div>
+<div class="card"><h3>Default Rest</h3><select id="defaultRest"><option value="60">60 sec</option><option value="90">90 sec</option><option value="120">2 min</option><option value="180">3 min</option><option value="300">5 min</option></select></div>
+<div class="card"><h3>Add Custom Exercise</h3><input id="customName" placeholder="Exercise name"><select id="customType"><option>Push</option><option>Pull</option><option>Legs</option><option>Upper Body</option><option>Full Body</option></select><button id="saveCustom">Add Exercise</button></div>
+</section>
+</main>
+
+<nav><button data-view="home" class="active">Workout</button><button data-view="history">History</button><button data-view="progress">Progress</button><button data-view="tools">Tools</button></nav>
+
+<dialog id="exerciseDialog"><div class="dialogHead"><h3>Add Exercise</h3><button id="closeExercise" class="secondary">Close</button></div><input id="exerciseSearch" placeholder="Search"><div id="exerciseChoices" class="stack"></div></dialog>
+<dialog id="timerDialog"><div class="dialogHead"><h3>Rest Timer</h3><button id="closeTimer" class="secondary">Close</button></div><div class="timer" id="timerDisplay">2:00</div><div class="actions"><button data-rest="60">60 sec</button><button data-rest="90">90 sec</button><button data-rest="120">2 min</button><button data-rest="180">3 min</button></div></dialog>
+<script src="app.js"></script>
+</body></html>
